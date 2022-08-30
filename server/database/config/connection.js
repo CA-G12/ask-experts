@@ -5,27 +5,27 @@ const {
   NODE_ENV, DATABASE_URL, DB_URL, DB_TEST_URL,
 } = process.env;
 
-let connectionString = '';
+let connectionString = DB_URL;
 let ssl = false;
 
-switch (NODE_ENV) {
-  case 'prod':
-    connectionString = DATABASE_URL;
-    ssl = {
-      rejectUnauthorized: false,
-    };
-    break;
-  case 'dev':
-    connectionString = DB_URL;
-    break;
+// switch (NODE_ENV) {
+//   case 'prod':
+//     connectionString = DB_URL;
+//     ssl = {
+//       rejectUnauthorized: false,
+//     };
+//     break;
+//   case 'dev':
+//     connectionString = DB_URL;
+//     break;
 
-  case 'test':
-    connectionString = DB_TEST_URL;
-    break;
+//   case 'test':
+//     connectionString = DB_TEST_URL;
+//     break;
 
-  default:
-    throw new Error('invalid db url');
-}
+//   default:
+//     throw new Error('invalid db url');
+// }
 
 const connection = new Pool({
   connectionString,
