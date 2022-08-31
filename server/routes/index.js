@@ -1,3 +1,4 @@
-const router = require('./users');
+const userRouter = require('./users');
+const answersRouter = require('./answers');
 
-module.exports = router;
+module.exports = { userRouter, answersRouter };

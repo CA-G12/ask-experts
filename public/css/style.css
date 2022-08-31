@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin&family=Dosis&family=Merriweather:ital@1&family=Montserrat:wght@300&family=Nunito:wght@700&family=PT+Sans&family=Roboto+Slab&family=Roboto:ital,wght@0,300;0,400;1,400&family=Work+Sans:ital,wght@0,300;0,500;1,300&display=swap%27');
+@import url('https://fonts.googleapis.com/css2?family=Cabin&family=Dosis&family=Merriweather:ital@1&family=Mochiy+Pop+One&family=Montserrat:wght@300&family=Nunito:wght@700&family=PT+Sans&family=Roboto+Slab&family=Roboto:ital,wght@0,300;0,400;1,400&family=Work+Sans:ital,wght@0,300;0,500;1,300&display=swap%27');
+
+:root {
+  --primary: #eddbc3;
+  --background: #edf4f1;
+  --secondary: #1d8ab3;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Noto Serif";
+}
+
+body {
+  font-family: "Noto Serif";
+  position: relative;
+}
+
+section.signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--background);
+}
+
+/* Signup styles */
+.container {
+  display: flex;
+  width: 900px;
+  max-width: 100%;
+  margin: auto;
+  box-shadow: 2px 4px rgb(235, 236, 240);
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.col {
+  width: 50%;
+  background-color: white;
+}
+
+.col.form {
+  padding: 60px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-group:last-of-type {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+input:not([type='submit']) {
+  border-width: 1px;
+  border-color: #ccc;
+}
+
+input.invalid:not([type='submit']) {
+  border-color: red;
+  color: red;
+}
+
+input.valid:not([type='submit']) {
+  border-color: green;
+  color: green;
+}
+
+input:focus {
+  border-width: 1px;
+  border-image: linear-gradient(to left, #941de9, #58d1e6);
+  border-image-slice: 1;
+  outline: none;
+  border-image-width: 2px;
+
+}
+
+input[type="submit"] {
+  margin-top: 10px;
+  cursor: pointer;
+  background-image: linear-gradient(to left, #941de9, #58d1e6);
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.4s;
+}
+
+
+input[type="submit"]:not(:disabled):hover {
+  background-image: linear-gradient(20deg, #58d1e6, #941de9);
+}
+
+input:disabled {
+  background-image: none;
+  background-color: gray;
+  color: black;
+}
+
+.error {
+  display: block;
+  color: red;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.error.hidden {
+  visibility: hidden;
+}
+
+/* Start Message box */
+#message-box {
+  position: absolute;
+  padding: 20px;
+  width: 300px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  background-color: green;
+  display: none;
+  font-size: 20px;
+  text-align: center;
+  top: -100%;
+  transition: 0.5s;
+}
+
+#message-box.show {
+  display: block;
+  animation: animate-message 0.4s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes animate-message {
+  100% {
+    top: 0;
+  }
+}
+
+/* End Message box */

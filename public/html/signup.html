@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>Sign Up</title>
+</head>
+<body>
+  <div id="message-box">
+
+  </div>
+  <section class="signup">
+    <div class="container">
+      <div class="col img">
+        <img class="login-img" src="../imgs/login.jpg" alt=""/>
+      </div>
+      <div class="col form">
+        <h1>Registeration Form</h1>
+        <form class="register" action="./index.html">
+            <div class="form-group">
+                <label for="text">Username</label>
+                <input type="text" id="username" name="usename"
+                    placeholder="Please enter username" />
+                <span class="error hidden">Error</span>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Please enter email" />
+                <span class="error hidden">Error</span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password"
+                    placeholder="Please enter password" />
+                <span class="error hidden">Error</span>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password"
+                    placeholder="Please confirm password" />
+                <span class="error hidden">Error</span>
+            </div>
+            <div class="form-group">
+                <input type="submit" id="submit" value="Submit" disabled="disabled">
+            </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <script src="../js/validation.js"></script>
+  <script src="../js/fetch.js"></script>
+  <script src="../js/validation.js"></script>
+</body>
+</html>
