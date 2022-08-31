@@ -3,7 +3,7 @@ const { join } = require('path');
 const express = require('express');
 // const compression = require('compression');
 const { env } = require('process');
-const {userRouter, answersRouter} = require('./routes');
+const { userRouter, answersRouter, questionsRouter } = require('./routes');
 
 const app = express();
 app.use(express.json());
@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 app.set('PORT', env.PORT || 3000);
 app.use(express.static(join(__dirname, '..', 'public')));
 
-app.use(userRouter, answersRouter);
+app.use(userRouter, answersRouter, questionsRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: 'page not found' });
