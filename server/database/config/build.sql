@@ -28,7 +28,6 @@ CREATE TABLE answers (
     date timestamp default now(),
   foreign key (question_id) REFERENCES questions(id) ,
   foreign key (user_id) REFERENCES  users(id) 
-
 );
 
 INSERT INTO users (username, email, password) VALUES
