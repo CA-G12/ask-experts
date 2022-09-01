@@ -138,6 +138,9 @@ input:disabled {
 .error.hidden {
     visibility: hidden;
 }
+a{
+    text-decoration: none;
+}
 
 @keyframes form-entry {
     0% {
