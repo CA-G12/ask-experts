@@ -19,5 +19,4 @@ module.exports = {
   addQuestion,
   getAll,
   getUserQuestions,
-
 };
