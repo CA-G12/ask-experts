@@ -9,7 +9,7 @@ const addQuestion = (req, res) => {
     title, category, content, userId,
   })
     .then((data) => {
-      res.json(data.rows);
+      res.redirect('/home');
     })
     .catch((err) => {
       console.log(err);

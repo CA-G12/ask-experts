@@ -1,9 +1,9 @@
 const addQuestion = require('./addQuestion');
 const getAll = require('./getAll');
-const getQuestionDetailes = require('./getQuestionDetailes');
+const questionsDetailes = require('./getQuestionDetailes');
 
 module.exports = {
   addQuestion,
   getAll,
-  getQuestionDetailes,
+  questionsDetailes,
 };

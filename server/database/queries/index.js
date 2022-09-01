@@ -6,7 +6,7 @@ const UserByLoginQuery = require('./users/getByNamepass');
 const addAnswerQuery = require('./answers/addAnswerQuery');
 const getQuestionAnswersQuery = require('./answers/getQuestionAnswersQuery');
 const updateVotesQuery = require('./answers/updateVotesQuery');
-const { addQuery, getQuery, getByIdQuery } = require('./questions');
+const { addQuery, getQuery, getByIdQuery, questionsDetailes } = require('./questions');
 
 module.exports = {
   addUserQuery,
@@ -20,4 +20,5 @@ module.exports = {
   getQuery,
   getByIdQuery,
   UserByLoginQuery,
+  questionsDetailes,
 };
