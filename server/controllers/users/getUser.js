@@ -11,6 +11,7 @@ const loginValidation = Joi.object({
 
 const getUserByLogin = (req, res, next) => {
   const { username, password } = req.body;
+  console.log('Here is the sign in controller!', username, password);
   const result = loginValidation.validate(
     { username, password },
   );
@@ -20,22 +21,19 @@ const getUserByLogin = (req, res, next) => {
         if (data.rows.length) {
           if (data.rows[0].password === password) {
             const token = jwt.sign({ username, password }, privateKey);
-
             res.cookie('token', token).status(200).json({
               message: 'success',
-              data: data.rows[0],
+
+              redirect: '/home',
             });
-            console.log(token);
-            // res.cookie('token', token).redirect('/');
           } else {
             res.json({
-              message: 'passwords dose not match',
+              err: 'Username or password is wrong !',
             });
-            res.clearCookie('token').redirect('/');
           }
         } else {
           res.json({
-            message: 'you are not a signed user',
+            err: 'you are not a signed user',
           });
 
           console.log('no data');

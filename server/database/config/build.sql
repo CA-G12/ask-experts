@@ -32,7 +32,8 @@ CREATE TABLE answers (
 
 INSERT INTO users (username, email, password) VALUES
   ('bayan', 'bayan@gmail.com', '123456'),
-  ('yazeed', 'yazeed@gmail.com', '123456')
+  ('yazeed', 'yazeed@gmail.com', '@$^131313')
+  
 ;
 
 INSERT INTO questions ( title,category,content,user_id,date) VALUES
@@ -41,8 +42,12 @@ INSERT INTO questions ( title,category,content,user_id,date) VALUES
 ;
 
 INSERT INTO answers (content,votes,question_id , user_id, date) VALUES
-('nice question',0,1,1,'2022-10-19 10:23:54'),
-('nice question',0,2,1,'2022-10-19 10:23:54')
+('nice question1',0,1,1,'2022-10-19 10:23:54'),
+('nice question2',3,2,1,'2022-10-19 10:23:54'),
+('nice question3',2,1,2,'2022-10-19 10:23:54'),
+('nice question4',9,2,1,'2022-10-19 10:23:54'),
+('nice question5',4,2,2,'2022-10-19 10:23:54'),
+('nice question6',13,2,1,'2022-10-19 10:23:54')
 ;
 
 COMMIT;

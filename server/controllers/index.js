@@ -6,7 +6,9 @@ const getUserByLogin = require('./users/getUser');
 const addAnswer = require('./answers/addAnswer');
 const getQuestionAnswers = require('./answers/getQuestionAnswers');
 const updateVotes = require('./answers/updateVotes');
-const { addQuestion, getAll, getUserQuestions } = require('./questions');
+const { addQuestion, getAll, getQuestionDetailes } = require('./questions');
+const signUp = require('./users/signUp');
+const signIn = require('./users/signIn');
 
 module.exports = {
   addUser,
@@ -18,6 +20,8 @@ module.exports = {
   updateVotes,
   addQuestion,
   getAll,
-  getUserQuestions,
+  getQuestionDetailes,
+  signUp,
+  signIn,
 
 };

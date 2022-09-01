@@ -14,13 +14,53 @@
  */}
 //  data => renderComments(answersContainer, data)
 const answersContainer = document.querySelector('.answers-container');
+const questionContainer = document.querySelector('#question-container')
+const queryString = window.location;
+// console.log(queryString.split('/'));
 const fetchAnswers = ( questionId ) => {
   fetchUrl('GET', `/question/${questionId}/answers`)
-  .then(data => renderComments(answersContainer, data))
+  .then(data => renderAnswers(answersContainer, data))
   .catch(err => console.log(err));
 }
 
-const renderComments = (answersContainer, answers) => {
+
+const renderQuestion = (question) = {
+
+    const { username, date, content,category } = question;
+
+    const post = document.createElement('div');
+    post.className = 'post';
+
+    const userName = document.createElement('div');
+    userName.className = 'user-name';
+    userName.textContent = username;
+    
+    const Category = document.createElement('div');
+    Category.className = 'user-name';
+    Category.textContent = category;
+    
+
+    const postText = document.createElement('div');
+    postText.className = 'post-text';
+    postText.textContent = content;
+
+    const postTime = document.createElement('div');
+    postTime.className = 'post-time';
+    postTime.textContent = date;
+    const upperContainer=document.createElement('div');
+    upperContainer.setAttribute('style','display:flex;justify-content: space-between;');
+    upperContainer.appendChild(userName);
+    upperContainer.appendChild(Category);
+   
+    questionContainer.appendChild(upperContainer);
+    questionContainer.appendChild(postText);
+    questionContainer.appendChild(postTime);
+    questionContainer.appendChild(postTime);
+   
+
+};
+
+const renderAnswers = (answersContainer, answers) => {
     console.log(answers);
     answers.forEach(answer => {
         const boxAnswer = answersContainer.createAppendElement('div', {className: 'box-ans'});
@@ -65,4 +105,3 @@ const renderComments = (answersContainer, answers) => {
 </div> */
 }
 fetchAnswers(2);
-// renderComments(1);
