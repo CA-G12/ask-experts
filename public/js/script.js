@@ -14,10 +14,12 @@ const packet = {
       'Content-type': 'application/json; charset=UTF-8',
     },
   };
+
   fetch('/login', packet).then((res) => res.json())
   .then((data) => {
     console.log(data.message);
   });}
+
 form.addEventListener('submit',(e)=>{
      e.preventDefault();
    postByLogin();

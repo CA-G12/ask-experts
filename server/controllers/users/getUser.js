@@ -7,7 +7,8 @@ const privateKey = '123456';
 
 const loginValidation = Joi.object({
   username: Joi.string().required(),
-  password: Joi.string().min(6).required(),
+
+  password: Joi.string().min(4).required(),
 });
 
 const getUserByLogin = (req, res, next) => {
@@ -16,6 +17,7 @@ const getUserByLogin = (req, res, next) => {
     { username, password },
   );
   if (!result.error) {
+
     console.log('here is get user controller', username, password);
     UserByLoginQuery({ username, password })
 .then((data)=> {
@@ -70,6 +72,8 @@ const getUserByLogin = (req, res, next) => {
       //   )
       // })
       // .catch((err) => next(err));
+
+
   }
 };
 

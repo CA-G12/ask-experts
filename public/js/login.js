@@ -95,7 +95,9 @@ passwordInput.addEventListener('blur', checkRequiredInput);
 
 // confirmPasswordInput.addEventListener('blur', checkRequiredInput);
 
-passwordInput.addEventListener('blur', checkMatchingPasswords);
+
+// passwordInput.addEventListener('blur', checkMatchingPasswords);
+
 // confirmPasswordInput.addEventListener('blur', checkMatchingPasswords);
 
 passwordInput.addEventListener('blur', checkStrongPassword);
