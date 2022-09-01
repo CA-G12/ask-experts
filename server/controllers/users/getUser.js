@@ -13,6 +13,7 @@ const loginValidation = Joi.object({
 
 const getUserByLogin = (req, res, next) => {
   const { username, password } = req.body;
+  console.log('Here is the sign in controller!', username, password);
   const result = loginValidation.validate(
     { username, password },
   );
@@ -20,26 +21,24 @@ const getUserByLogin = (req, res, next) => {
 
     console.log('here is get user controller', username, password);
     UserByLoginQuery({ username, password })
-.then((data)=> {
-  if(data.rows.length){
-    if (data.rows[0].password === password) {
-      res.status(200).json({
-        message: 'success',
-        data: data.rows[0],
-      })
-      const token = jwt.sign({ username, password }, privateKey);
-      console.log(token);
-      res.cookie('token', token).redirect('/');
-    }
-    else{
-      res.json({
-        message: 'passwords dose not match'
-      })
-      res.clearCookie('token').redirect ('/')
-    }
-  }else{
-    res.json({
-            message: 'you are not a signed user'
+      .then((data) => {
+        if (data.rows.length) {
+          if (data.rows[0].password === password) {
+            const token = jwt.sign({ username, password }, privateKey);
+            res.cookie('token', token).status(200).json({
+              message: 'success',
+
+              redirect: '/home',
+            });
+          } else {
+            res.json({
+              err: 'Username or password is wrong !',
+            });
+            res.clearCookie('token').redirect ('/')
+          }
+        } else {
+          res.json({
+            err: 'you are not a signed user',
           });
            
     console.log('no data');

@@ -7,7 +7,6 @@ const addAnswer = (req, res, next) => {
   } = req.body;
   const { questionId } = req.params;
 
-  console.log('here is add user controller', content, votes, questionId, userId);
   addAnswerQuery({
     content, votes, questionId, userId,
   })

@@ -24,52 +24,52 @@ const hideError = (checkedInput, messageElement, validMessage) => {
 
 const checkRequiredInput = (event) => {
     const errorSpan = event.target.parentElement.querySelector('.error');
-    if (event.target.value.trim() == ''){
+    if (event.target.value.trim() == '') {
         showError(event.target, errorSpan, 'Required');
     } else {
         hideError(event.target, errorSpan);
-        if(event.target.id === 'username'){
+        if (event.target.id === 'username') {
             fetchUrl('POST', '/check-username', { username: usernameInput.value })
-            .then(data => {
-                if(data.message == 'Username is already exists') {
-                    showError(usernameInput, errorSpan, `Username is already exists`);
-                    usernameAvailable = false;
-                } else {
-                    hideError(usernameInput, errorSpan);
-                    usernameAvailable = true;
-                }
-            }).then(checkFormValid())
+                .then(data => {
+                    if (data.message == 'Username is already exists') {
+                        showError(usernameInput, errorSpan, `Username is already exists`);
+                        usernameAvailable = false;
+                    } else {
+                        hideError(usernameInput, errorSpan);
+                        usernameAvailable = true;
+                    }
+                }).then(checkFormValid())
         }
     }
 }
 
 const checkValidEmail = (event) => {
     const errorSpan = emailInput.parentElement.querySelector('.error');
-    if(emailInput.value != ''){
-        if(!isValidEmail(emailInput.value)) {
+    if (emailInput.value != '') {
+        if (!isValidEmail(emailInput.value)) {
             showError(emailInput, errorSpan, `Please enter valid email`);
-        } else { 
+        } else {
             hideError(emailInput, errorSpan);
-            fetchUrl('POST', '/check-email', {email: emailInput.value})
-            .then(data => {
-                if(data.message == 'Email is already exists') {
-                    showError(emailInput, errorSpan, `Email is already exists`);
-                    emailAvailable = false;
-                } else {
-                    hideError(emailInput, errorSpan);
-                    emailAvailable = true;
-                }
-            }).then(checkFormValid())
+            fetchUrl('POST', '/check-email', { email: emailInput.value })
+                .then(data => {
+                    if (data.message == 'Email is already exists') {
+                        showError(emailInput, errorSpan, `Email is already exists`);
+                        emailAvailable = false;
+                    } else {
+                        hideError(emailInput, errorSpan);
+                        emailAvailable = true;
+                    }
+                }).then(checkFormValid())
         }
     }
 }
 
 const checkStrongPassword = (event) => {
     const errorSpan = passwordInput.parentElement.querySelector('.error');
-    if(passwordInput.value != ''){
-        if(!isValidPassword(passwordInput.value)) {
+    if (passwordInput.value != '') {
+        if (!isValidPassword(passwordInput.value)) {
             showError(passwordInput, errorSpan, `Please enter strong password`);
-        } else { 
+        } else {
             hideError(passwordInput, errorSpan);
         }
     }
@@ -77,24 +77,24 @@ const checkStrongPassword = (event) => {
 
 const checkMatchingPasswords = (event) => {
     const errorSpan = confirmPasswordInput.parentElement.querySelector('.error');
-    if(passwordInput.value !== "" && confirmPasswordInput.value != ''){
-        if(passwordInput.value !== confirmPasswordInput.value) {
+    if (passwordInput.value !== "" && confirmPasswordInput.value != '') {
+        if (passwordInput.value !== confirmPasswordInput.value) {
             showError(confirmPasswordInput, errorSpan, `Passwords don't match`);
-        } else { 
+        } else {
             hideError(confirmPasswordInput, errorSpan);
         }
     }
 }
 
 const checkFormValid = (event) => {
-    const formInputs = document.querySelectorAll('input:not([type="submit"])');   
+    const formInputs = document.querySelectorAll('input:not([type="submit"])');
     const allInputsFilled = Array.from(formInputs).every((input) => input.value);
-    if(allInputsFilled 
-        && passwordInput.value == confirmPasswordInput.value 
+    if (allInputsFilled
+        && passwordInput.value == confirmPasswordInput.value
         && isValidPassword(passwordInput.value)
         && isValidEmail(emailInput.value)
         && emailAvailable
-        && usernameAvailable){
+        && usernameAvailable) {
         submitBtn.removeAttribute('disabled');
     } else {
         submitBtn.setAttribute('disabled', 'disabled');
@@ -111,17 +111,48 @@ function isValidEmail(email) {
     return regex.test(email);
 }
 
-
 submitBtn.onclick = (e) => {
     e.preventDefault();
-    fetchUrl('POST','/signup', {
-        username: usernameInput.value,
-        email: emailInput.value,
-        password: passwordInput.value,
-    }).then(data => {
-        messageBox.textContent = 'User is added successfully';
-        messageBox.classList.toggle('show')}
-    );
+    /* fetchUrl('POST', '/signup', {
+         username: usernameInput.value,
+         email: emailInput.value,
+         password: passwordInput.value,
+     }).then(data => {
+         /* messageBox.textContent = 'User is added successfully';
+          messageBox.classList.toggle('show')
+         console.log(data)
+     }
+     );*/
+
+    fetch('/signup', {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        method: 'POST',
+        body: JSON.stringify({
+            username: usernameInput.value,
+            email: emailInput.value,
+            password: passwordInput.value,
+        }),
+
+    })
+        .then((data) => data.json()).then((data) => {
+            console.log(data)
+            if (data.err) {
+                console.log(data.err);
+            } else {
+                let url = document.URL;
+                url = url.slice(0, url.lastIndexOf('/'))
+
+                window.location.href = url
+                    + data.redirect;
+            }
+        })
+        .catch(() => { console.log('erorrrrrrrrrrrr!'); });
+
+
+
+
 }
 
 usernameInput.addEventListener('blur', checkRequiredInput);

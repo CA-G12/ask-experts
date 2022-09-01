@@ -43,7 +43,7 @@ const checkStrongPassword = (event) => {
     const errorSpan = passwordInput.parentElement.querySelector('.error');
     if(passwordInput.value != ''){
         if(!isValidPassword(passwordInput.value)) {
-            showError(passwordInput, errorSpan, `Please enter strong password`);
+            showError(passwordInput, errorSpan, `Please enter a valid password`);
         } else { 
             hideError(passwordInput, errorSpan);
         }
@@ -77,7 +77,6 @@ const checkFormValid = (event) => {
 }
 
 function isValidPassword(password) {
-    console.log(password);
     var regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
     return regex.test(password);
 }

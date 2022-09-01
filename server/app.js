@@ -13,6 +13,16 @@ app.use(express.urlencoded({ extended: false }));
 app.set('PORT', env.PORT || 3000);
 app.use(express.static(join(__dirname, '..', 'public')));
 
+app.use('/home', (req, res) => {
+  console.log('here is home')
+  res.sendFile(join(__dirname, '..', 'public', 'html', 'home.html'));
+});
+
+app.use('/detailes', (req, res) => {
+  console.log('here is detailes')
+  res.sendFile(join(__dirname, '..', 'public', 'html', 'detailes.html'));
+});
+
 app.use(userRouter, answersRouter, questionsRouter);
 
 app.use((req, res) => {

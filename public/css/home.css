@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,500&display=swap');
+
+:root {
+    --first-color: #F38181;
+    --second-color: #F8DF86;
+    --third-color: #EAFFD0;
+    --fourth-color: #95E1D3;
+    --fifth-color: #FBF8F3;
+    --input-back-color: #EAF0F7;
+    /* font-family: 'Exo 2', sans-serif; */
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background-color: #FBF8F3;
+}
+
+/* -------------posts styles ----------------- */
+
+.main-container {
+    width: 70%;
+    margin: 0 auto;
+    background-color: #FBF8F3;
+    height: 100%;
+}
+
+header {
+    padding: 20px;
+    border-bottom: 3px solid var(--first-color);
+}
+
+header h1 {
+    font-family: 'Exo 2', sans-serif;
+}
+
+
+.add-question-container {
+    width: 70%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 1px 2px 5px #80808045;
+
+}
+
+.add-question-container h3 {
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Exo 2', sans-serif;
+}
+
+form.add-post-form {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 200px;
+}
+
+textarea{
+    height: 100px;
+}
+textarea , input {
+    padding: 20px ;
+    width: 50%;
+    border-radius: 5px;
+    border: none;
+    
+}
+textarea{background-color: var(--input-back-color);
+border: 1px dashed #5f5e5e;}
+
+input[type=submit] {
+    background-color: var(--first-color);
+}
+
+/* .add-question-container::after{
+    content: '';
+    height: 0.5px;
+    width: 50%;
+    margin: 0 auto;
+    background-color: #5f5e5e;
+    color: #5f5e5e;
+} */
+
+.posts{
+    padding: 20px;
+    border-top: 1px dashed #5f5e5e;
+}
+.main-container h3 {
+    font-family: 'Exo 2', sans-serif;
+    margin-left: 20px;
+}
+
+.post{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 16px;
+    margin: 20px auto;
+    width: 72%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 1px 2px 5px #80808045;
+}
+
+.user-name{
+    font-family: 'Exo 2', sans-serif;
+    font-size: 13px;
+    margin-bottom: 10px; 
+}
+.post-text{
+    margin-left: 30px;
+    padding-left: 10px;
+    border-left: 3px solid var(--first-color);
+}
+.post-time{
+    text-align: end;
+    font-size: 8px;
+    color: #56c4af;
+}
