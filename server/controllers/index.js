@@ -23,5 +23,5 @@ module.exports = {
   getQuestionDetailes,
   signUp,
   signIn,
-
+  getUserQuestions,
 };
